@@ -372,7 +372,7 @@ const app = {
         randomBtn.classList.toggle('active', this.isRandom) 
         repeatBtn.classList.toggle('active', this.isRepeat)
 
-        this.musicPlayed[0] = this.config.musicIndex      
+        // this.musicPlayed[0] = this.config.musicIndex      
  
     }
 }
