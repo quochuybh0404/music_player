@@ -136,10 +136,11 @@ const app = {
 
     loadCurrentSong: function() {
     
-      heading.textContent = this.currentSong.name
-      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
-      audio.src = this.currentSong.path
-      
+      // heading.textContent = this.currentSong.name
+      // cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
+      // audio.src = this.currentSong.path
+
+        console.log(this.currentSong)
 
     },
 
