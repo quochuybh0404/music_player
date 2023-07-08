@@ -155,7 +155,8 @@ const app = {
           if(getItems) {
             const object = JSON.parse(getItems)
             const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
+            console.log(savedLocation/100 * audio.duration)
+            // audio.currentTime = savedLocation/100 * audio.duration
             audio.play()
           }
         }
