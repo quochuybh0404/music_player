@@ -151,9 +151,9 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
+          const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
+          if(getItems) {
+            const object = JSON.parse(getItems)
             const savedLocation = object.currentTime
             audio.currentTime = savedLocation/100 * audio.duration
             audio.play()
