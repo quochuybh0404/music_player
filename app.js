@@ -27,7 +27,7 @@ const app = {
       {
         name: "Tanjiro no Uta",
         singer: "Go Shiina, Nami Nakagawa",
-        path: "music/tanjiro_no_uta.mp3",
+        path: "https://ytop1.com/Download?l=0_tFNIkBm98ILMLBHpNg&f=4198568686363351494&cs=10ee9760e8f373a1&lif=https%3a%2f%2fwww.youtube.com%2fwatch%3fv%3dOV1i4MoIDAg&token=ECB4BE7BF27A5F31200A6D670EA98606",
         image: "image/Tanjiro_Nezuko.jpg"
       },
       {
