@@ -358,6 +358,9 @@ const app = {
 
         // Render playlist
         this.render()
+
+        randomBtn.classList.toggle('active', this.isRandom) 
+        repeatBtn.classList.toggle('active', this.isRepeat)
  
     }
 }
