@@ -166,7 +166,8 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        _this.setConfig('musicIndex', app.currentIndex)
+        // _this.setConfig('musicIndex', app.currentIndex)
+        console.log(_this.currentIndex)
 
         
       }
@@ -298,7 +299,7 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      this.currentIndex = this.config.musicIndex
+      // this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
       
     },
