@@ -160,13 +160,13 @@ const app = {
         } else {
           audio.play()
 
-          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          // if(getItem) {
-          //   const object = JSON.parse(getItem)
-          //   const savedLocation = object.currentTime
-          //   audio.currentTime = savedLocation/100 * audio.duration
-          //   audio.play()
-          // }
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          if(getItem) {
+            const object = JSON.parse(getItem)
+            const savedLocation = object.currentTime
+            audio.currentTime = savedLocation/100 * audio.duration
+            audio.play()
+          }
         }
       }
 
@@ -192,7 +192,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          // _this.setConfig('currentTime', progress.value)
+          _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -223,7 +223,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            // _this.setConfig('currentTime', progress.value)
+            _this.setConfig('currentTime', progress.value)
           }
         }
       }
