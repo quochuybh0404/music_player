@@ -151,13 +151,13 @@ const app = {
         } else {
           audio.play()
 
-          // const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
-          // if(getItems) {
-          //   const object = JSON.parse(getItems)
-          //   const savedLocation = object.currentTime
-          //   audio.currentTime = savedLocation/100 * audio.duration
-          //   audio.play()
-          // }
+          const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
+          if(getItems) {
+            const object = JSON.parse(getItems)
+            const savedLocation = object.currentTime
+            audio.currentTime = savedLocation/100 * audio.duration
+            audio.play()
+          }
         }
       }
 
