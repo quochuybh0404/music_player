@@ -264,7 +264,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
