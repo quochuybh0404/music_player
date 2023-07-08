@@ -151,13 +151,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItems) {
-            const object = JSON.parse(getItems)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItems) {
+          //   const object = JSON.parse(getItems)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -166,7 +166,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        // _this.setConfig('musicIndex', _this.currentIndex)
+        _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
@@ -298,7 +298,7 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      // this.currentIndex = this.config.musicIndex
+      this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
       
     },
