@@ -184,7 +184,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          _this.setConfig('currentTime', progress.value)
+          // _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -215,7 +215,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            _this.setConfig('currentTime', progress.value)
+            // _this.setConfig('currentTime', progress.value)
           }
         }
       }
@@ -299,7 +299,7 @@ const app = {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
       this.currentIndex = this.config.musicIndex
-      progress.value = this.config.currentTime
+      // progress.value = this.config.currentTime
       
     },
 
