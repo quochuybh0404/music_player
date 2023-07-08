@@ -249,14 +249,14 @@ const app = {
       randomBtn.onclick = function() {
         
         _this.isRandom = !_this.isRandom
-        _this.setConfig('isRandom', _this.isRandom)
+        // _this.setConfig('isRandom', _this.isRandom)
         randomBtn.classList.toggle('active', _this.isRandom) 
       }
 
       // Xử lý lặp lại một bài hát
       repeatBtn.onclick = function() {
         _this.isRepeat = !_this.isRepeat
-        _this.setConfig('isRepeat', _this.isRepeat) 
+        // _this.setConfig('isRepeat', _this.isRepeat) 
 
         repeatBtn.classList.toggle('active', _this.isRepeat)
       }
@@ -297,8 +297,8 @@ const app = {
     },
     
     loadConfig: function() {
-      this.isRandom = this.config.isRandom
-      this.isRepeat = this.config.isRepeat
+      // this.isRandom = this.config.isRandom
+      // this.isRepeat = this.config.isRepeat
       // this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
       
