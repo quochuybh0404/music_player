@@ -90,10 +90,10 @@ const app = {
         }
       ],
 
-    // setConfig: function(key, value) {
-    //   this.config[key] = value
-    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    // },
+    setConfig: function(key, value) {
+      this.config[key] = value
+      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },
     
     render: function() {
         const htmls = this.songs.map(song => {
@@ -151,13 +151,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -264,7 +264,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
