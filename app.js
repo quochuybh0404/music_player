@@ -132,6 +132,15 @@ const app = {
       })
     },
 
+    loadCurrentSong: function() {
+    
+      heading.textContent = this.currentSong.name
+      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
+      audio.src = this.currentSong.path
+      
+      
+    },
+
     handleEvents: function() {
       const _this = this
       const cdWidth = cd.offsetWidth // 200px
@@ -305,14 +314,7 @@ const app = {
       
     },
 
-    loadCurrentSong: function() {
-    
-      heading.textContent = this.currentSong.name
-      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
-      audio.src = this.currentSong.path
-      
-      
-    },
+
 
     nextSong: function() {
       this.currentIndex++
