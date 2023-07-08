@@ -1,12 +1,20 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
+const PLAYER_STORAGE_KEY = 'DEMON_SLAYER'
+
 const cd = $('.cd')
 const heading = $('header h2')
 const cdThumb = $('.cd-thumb')
 const audio = $('#audio')
 const playBtn = $('.btn-toggle-play')
 const player = $('.player')
+const progress = $('#progress')
+const prevBtn = $('.btn-prev')
+const nextBtn = $('.btn-next')
+const randomBtn = $('.btn-random')
+const repeatBtn = $('.btn-repeat')
+const playlist = $('.playlist')
 
 
 const app = {
