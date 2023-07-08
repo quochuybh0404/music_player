@@ -90,10 +90,10 @@ const app = {
         }
       ],
 
-    setConfig: function(key, value) {
-      this.config[key] = value
-      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    },
+    // setConfig: function(key, value) {
+    //   this.config[key] = value
+    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    // },
     
     render: function() {
         const htmls = this.songs.map(song => {
