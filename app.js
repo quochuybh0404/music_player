@@ -103,10 +103,10 @@ const app = {
       },
       
     ],
-    // setConfig: function(key, value) {
-    //   this.config[key] = value
-    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    // },
+    setConfig: function(key, value) {
+      this.config[key] = value
+      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },
     render: function() {
         const htmls = this.songs.map((song, index) => {
           return `<div class="song ${index === this.currentIndex ? 'active' : ''}" data-index=${index}>
@@ -256,14 +256,14 @@ const app = {
       randomBtn.onclick = function() {
         
         _this.isRandom = !_this.isRandom
-        // _this.setConfig('isRandom', _this.isRandom)
+        _this.setConfig('isRandom', _this.isRandom)
         randomBtn.classList.toggle('active', _this.isRandom) 
       }
 
       // Xử lý lặp lại một bài hát
       repeatBtn.onclick = function() {
         _this.isRepeat = !_this.isRepeat
-        // _this.setConfig('isRepeat', _this.isRepeat) 
+        _this.setConfig('isRepeat', _this.isRepeat) 
 
         repeatBtn.classList.toggle('active', _this.isRepeat)
       }
@@ -272,7 +272,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -296,13 +296,13 @@ const app = {
       
     },
     
-    // loadConfig: function() {
-    //   this.isRandom = this.config.isRandom
-    //   this.isRepeat = this.config.isRepeat
-    //   this.currentIndex = this.config.musicIndex
-    //   progress.value = this.config.currentTime
+    loadConfig: function() {
+      this.isRandom = this.config.isRandom
+      this.isRepeat = this.config.isRepeat
+      // this.currentIndex = this.config.musicIndex
+      // progress.value = this.config.currentTime
       
-    // },
+    },
 
     loadCurrentSong: function() {
     
@@ -376,7 +376,7 @@ const app = {
 
     start: function() {
         // Gắn cấu hình từ config vào ứng dụng
-        // this.loadConfig()
+        this.loadConfig()
 
         // Định nghĩa các thuộc tính
         this.defineProperties()
@@ -391,10 +391,10 @@ const app = {
         this.render()
 
         // Hiển thị trạng thái ban đầu của button repeat & random
-        // randomBtn.classList.toggle('active', this.isRandom) 
-        // repeatBtn.classList.toggle('active', this.isRepeat)
+        randomBtn.classList.toggle('active', this.isRandom) 
+        repeatBtn.classList.toggle('active', this.isRepeat)
 
-        // this.musicPlayed[0] = this.config.musicIndex       
+        this.musicPlayed[0] = this.config.musicIndex       
         
         // this.playFromSavedPosition()
     }
