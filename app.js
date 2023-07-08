@@ -20,6 +20,10 @@ const playlist = $('.playlist')
 const app = {
     currentIndex: 0,
     isPlaying: false,
+    isRandom: false,
+    isRepeat: false,
+    musicPlayed : [0],
+    config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
         {
           name: "Tanjiro no Uta",
@@ -140,13 +144,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -155,7 +159,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        _this.setConfig('musicIndex', _this.currentIndex)
+        // _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
@@ -173,7 +177,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          _this.setConfig('currentTime', progress.value)
+          // _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -204,7 +208,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            _this.setConfig('currentTime', progress.value)
+            // _this.setConfig('currentTime', progress.value)
           }
         }
       }
@@ -237,14 +241,14 @@ const app = {
       randomBtn.onclick = function() {
         
         _this.isRandom = !_this.isRandom
-        _this.setConfig('isRandom', _this.isRandom)
+        // _this.setConfig('isRandom', _this.isRandom)
         randomBtn.classList.toggle('active', _this.isRandom) 
       }
 
       // Xử lý lặp lại một bài hát
       repeatBtn.onclick = function() {
         _this.isRepeat = !_this.isRepeat
-        _this.setConfig('isRepeat', _this.isRepeat) 
+        // _this.setConfig('isRepeat', _this.isRepeat) 
 
         repeatBtn.classList.toggle('active', _this.isRepeat)
       }
@@ -277,11 +281,87 @@ const app = {
       
     },
 
+    // Lắng nghe hành vi click vào playlist
+      playlist.onclick = function(e) {
+        // Xử lý khi click vào bài hát
+        const songNode = e.target.closest('.song:not(.active)')
+        if (songNode && !e.target.closest('.option')) {
+          // var getIndex =  songNode.getAttribute('data-index')  // --- Cách 1 ---
+
+          var getIndex =  Number(songNode.dataset.index) // --- Cách 2 ---
+          _this.currentIndex = getIndex
+          _this.loadCurrentSong()
+          _this.render()
+          audio.play()
+        }
+      }
+      
+    },
+    
+    // loadConfig: function() {
+    //   this.isRandom = this.config.isRandom
+    //   this.isRepeat = this.config.isRepeat
+    //   this.currentIndex = this.config.musicIndex
+    //   progress.value = this.config.currentTime
+      
+    // },
+
     loadCurrentSong: function() {
+    
       heading.textContent = this.currentSong.name
-      cdThumb.style.backgroundImage = `${this.currentSong.image}`
+      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
       audio.src = this.currentSong.path
       
+
+    },
+
+    nextSong: function() {
+      this.currentIndex++
+      if(this.currentIndex >= this.songs.length) {
+        this.currentIndex = 0
+      }
+      
+      this.loadCurrentSong()
+    },
+
+    prevSong: function() {
+      this.currentIndex--
+      if(this.currentIndex < 0) {
+        this.currentIndex = this.songs.length - 1
+      }
+      this.loadCurrentSong()
+    },
+
+    
+    randomSong: function() {
+      // Xử lý để khi click phát ngẫu nhiên sẽ ko bị lặp trúng bài vừa phát và ko lặp lại khi chưa hết danh sách bài hát
+      // Chỉ lặp lại khi đã hết danh sách bài hát
+      
+      let randomIndex
+      do {
+        do {
+          randomIndex = Math.floor(Math.random() * this.songs.length)  
+        } while (randomIndex === this.currentIndex) 
+        this.currentIndex = randomIndex
+      } while (this.musicPlayed.includes(this.currentIndex))
+  
+      this.musicPlayed.push(this.currentIndex)
+      this.loadCurrentSong()
+      console.log(this.musicPlayed)
+      if (this.musicPlayed.length === this.songs.length ) {
+        this.musicPlayed = []
+      }
+      
+    },
+
+    scrollToActiveSong: function() {
+      setTimeout(() => {
+        $('.song.active').scrollIntoView({
+          behavior: "smooth",
+          block: "end", 
+          
+        })
+      }, 200)
     },
 
     start: function() {
