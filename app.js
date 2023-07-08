@@ -1,29 +1,17 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-const PLAYER_STORAGE_KEY = 'DEMON_SLAYER'
-
 const cd = $('.cd')
 const heading = $('header h2')
 const cdThumb = $('.cd-thumb')
 const audio = $('#audio')
 const playBtn = $('.btn-toggle-play')
 const player = $('.player')
-const progress = $('#progress')
-const prevBtn = $('.btn-prev')
-const nextBtn = $('.btn-next')
-const randomBtn = $('.btn-random')
-const repeatBtn = $('.btn-repeat')
-const playlist = $('.playlist')
 
 
 const app = {
     currentIndex: 0,
     isPlaying: false,
-    isRandom: false,
-    isRepeat: false,
-    musicPlayed : [0],
-    config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
         {
           name: "Tanjiro no Uta",
@@ -89,12 +77,6 @@ const app = {
             "image/demon slayer ss3.jpg"
         }
       ],
-
-    // setConfig: function(key, value) {
-    //   this.config[key] = value
-    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    // },
-    
     render: function() {
         const htmls = this.songs.map(song => {
           return `<div class="song">
@@ -127,16 +109,6 @@ const app = {
       const _this = this
       const cdWidth = cd.offsetWidth // 200px
 
-      // Xử lý CD quay/dừng
-      const cdThumbAnimate = cdThumb.animate([
-        {transform: 'rotate(360deg)'}
-      ], {
-        duration: 10000, // 10 seconds
-        iterations: Infinity
-      })
-
-      cdThumbAnimate.pause()
-
       // Xử lý phóng to/thu nhỏ CD
       document.onscroll = function() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop
@@ -146,147 +118,16 @@ const app = {
       }
       // Xử lý khi click play
       playBtn.onclick = function() {
-        if(_this.isPlaying) {
+        if (_this.isPlaying) {
+          _this.isPlaying = false
           audio.pause()
+          player.classList.remove('playing')
         } else {
+          _this.isPlaying = true
           audio.play()
-
-          // const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
-          // if(getItems) {
-          //   const object = JSON.parse(getItems)
-          //   const savedLocation = object.currentTime
-          //   audio.currentTime = savedLocation/100 * audio.duration
-          //   audio.play()
-          // }
+          player.classList.add('playing')
         }
-      }
-
-      // Khi bài hát được play
-      audio.onplay = function() {
-        _this.isPlaying = true
-        player.classList.add('playing')
-        cdThumbAnimate.play()
-        // _this.setConfig('musicIndex', app.currentIndex)
-        console.log(_this.currentIndex)
-
-        
-      }
-
-      // Khi bài hát bị pause
-      audio.onpause = function() {
-        _this.isPlaying = false
-        player.classList.remove('playing')
-        cdThumbAnimate.pause()
-      }
-
-      // Khi tiến độ bài hát thay đổi
-      audio.ontimeupdate = function() {
-        if (audio.duration) {
-          // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
-          // progress.value = progressPercent
-          progress.value = audio.currentTime/audio.duration *100
-          // _this.setConfig('currentTime', progress.value)
-        }
-        
-      }
-
-      progress.onmousedown = function() {
-        audio.ontimeupdate = null
-      }
-
-      progress.onmouseup = function() {
-        audio.ontimeupdate = function() {
-          if (audio.duration) {
-            // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
-            // progress.value = progressPercent
-            progress.value = audio.currentTime/audio.duration *100
-          }
-          
-        }
-      }
-      
-      // Xử lý khi tua bài hát
-      progress.onchange = function() {
-        const seekTime = progress.value * audio.duration / 100
-        audio.currentTime = seekTime
-
-        // Sau khi tua thì tiếp tục hiển thời gian chạy
-        audio.ontimeupdate = function() {
-          if (audio.duration) {
-            // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
-            // progress.value = progressPercent
-            progress.value = audio.currentTime/audio.duration *100
-            // _this.setConfig('currentTime', progress.value)
-          }
-        }
-      }
-
-      // Khi next bài hát
-      nextBtn.onclick = function() {
-        if(_this.isRandom) {
-          _this.randomSong()
-        } else {
-          _this.nextSong()
-          
-        }
-        audio.play()
-        _this.render()
-        _this.scrollToActiveSong()
-      }
-
-      prevBtn.onclick = function() {
-        if(_this.isRandom) {
-          _this.randomSong()
-        } else {
-        _this.prevSong()
-        }
-        audio.play()
-        _this.render()
-        _this.scrollToActiveSong()
-      }
-
-      // Xử lý bật/tắt random song
-      randomBtn.onclick = function() {
-        
-        _this.isRandom = !_this.isRandom
-        // _this.setConfig('isRandom', _this.isRandom)
-        randomBtn.classList.toggle('active', _this.isRandom) 
-      }
-
-      // Xử lý lặp lại một bài hát
-      repeatBtn.onclick = function() {
-        _this.isRepeat = !_this.isRepeat
-        // _this.setConfig('isRepeat', _this.isRepeat) 
-
-        repeatBtn.classList.toggle('active', _this.isRepeat)
-      }
-
-      // Xử lý next song khi audio ended
-      audio.onended = function() {
-        if(_this.isRepeat) {
-          audio.play()
-          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          
-        } else {
-          nextBtn.click()
-        }
-      }
-
-      // Lắng nghe hành vi click vào playlist
-      playlist.onclick = function(e) {
-        // Xử lý khi click vào bài hát
-        const songNode = e.target.closest('.song:not(.active)')
-        if (songNode && !e.target.closest('.option')) {
-          // var getIndex =  songNode.getAttribute('data-index')  // --- Cách 1 ---
-
-          var getIndex =  Number(songNode.dataset.index) // --- Cách 2 ---
-          _this.currentIndex = getIndex
-          _this.loadCurrentSong()
-          _this.render()
-          audio.play()
-        }
-      }
-      
+      }     
     },
 
     loadCurrentSong: function() {
@@ -295,68 +136,8 @@ const app = {
       audio.src = this.currentSong.path
       
     },
-    
-    // loadConfig: function() {
-    //   this.isRandom = this.config.isRandom
-    //   this.isRepeat = this.config.isRepeat
-    //   this.currentIndex = this.config.musicIndex
-    //   progress.value = this.config.currentTime
-      
-    // },
-
-        nextSong: function() {
-      this.currentIndex++
-      if(this.currentIndex >= this.songs.length) {
-        this.currentIndex = 0
-      }
-      
-      this.loadCurrentSong()
-    },
-
-    prevSong: function() {
-      this.currentIndex--
-      if(this.currentIndex < 0) {
-        this.currentIndex = this.songs.length - 1
-      }
-      this.loadCurrentSong()
-    },
-
-    
-    randomSong: function() {
-      // Xử lý để khi click phát ngẫu nhiên sẽ ko bị lặp trúng bài vừa phát và ko lặp lại khi chưa hết danh sách bài hát
-      // Chỉ lặp lại khi đã hết danh sách bài hát
-      
-      let randomIndex
-      do {
-        do {
-          randomIndex = Math.floor(Math.random() * this.songs.length)  
-        } while (randomIndex === this.currentIndex) 
-        this.currentIndex = randomIndex
-      } while (this.musicPlayed.includes(this.currentIndex))
-  
-      this.musicPlayed.push(this.currentIndex)
-      this.loadCurrentSong()
-      console.log(this.musicPlayed)
-      if (this.musicPlayed.length === this.songs.length ) {
-        this.musicPlayed = []
-      }
-      
-    },
-
-    scrollToActiveSong: function() {
-      setTimeout(() => {
-        $('.song.active').scrollIntoView({
-          behavior: "smooth",
-          block: "end", 
-          
-        })
-      }, 200)
-    },
 
     start: function() {
-        // Gắn cấu hình từ config vào ứng dụng
-        // this.loadConfig()
-        
         // Định nghĩa các thuộc tính
         this.defineProperties()
 
@@ -368,11 +149,6 @@ const app = {
 
         // Render playlist
         this.render()
-
-        randomBtn.classList.toggle('active', this.isRandom) 
-        repeatBtn.classList.toggle('active', this.isRepeat)
-
-        // this.musicPlayed[0] = this.config.musicIndex      
  
     }
 }
