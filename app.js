@@ -123,7 +123,7 @@ const app = {
 
     
 
-        handleEvents: function() {
+    handleEvents: function() {
       const _this = this
       const cdWidth = cd.offsetWidth // 200px
 
@@ -265,7 +265,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -296,13 +296,13 @@ const app = {
       
     },
     
-    loadConfig: function() {
-      // this.isRandom = this.config.isRandom
-      // this.isRepeat = this.config.isRepeat
-      // this.currentIndex = this.config.musicIndex
-      // progress.value = this.config.currentTime
+    // loadConfig: function() {
+    //   this.isRandom = this.config.isRandom
+    //   this.isRepeat = this.config.isRepeat
+    //   this.currentIndex = this.config.musicIndex
+    //   progress.value = this.config.currentTime
       
-    },
+    // },
 
         nextSong: function() {
       this.currentIndex++
