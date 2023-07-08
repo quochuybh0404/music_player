@@ -280,23 +280,6 @@ const app = {
       }
       
     },
-
-    // Lắng nghe hành vi click vào playlist
-      playlist.onclick = function(e) {
-        // Xử lý khi click vào bài hát
-        const songNode = e.target.closest('.song:not(.active)')
-        if (songNode && !e.target.closest('.option')) {
-          // var getIndex =  songNode.getAttribute('data-index')  // --- Cách 1 ---
-
-          var getIndex =  Number(songNode.dataset.index) // --- Cách 2 ---
-          _this.currentIndex = getIndex
-          _this.loadCurrentSong()
-          _this.render()
-          audio.play()
-        }
-      }
-      
-    },
     
     // loadConfig: function() {
     //   this.isRandom = this.config.isRandom
@@ -363,7 +346,7 @@ const app = {
         })
       }, 200)
     },
-
+    
     start: function() {
         // Định nghĩa các thuộc tính
         this.defineProperties()
