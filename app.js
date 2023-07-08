@@ -355,7 +355,7 @@ const app = {
 
     start: function() {
         // Gắn cấu hình từ config vào ứng dụng
-        this.loadConfig()
+        // this.loadConfig()
         
         // Định nghĩa các thuộc tính
         this.defineProperties()
