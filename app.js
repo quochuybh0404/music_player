@@ -265,19 +265,19 @@ const app = {
       }
 
       // Lắng nghe hành vi click vào playlist
-      playlist.onclick = function(e) {
-        // Xử lý khi click vào bài hát
-        const songNode = e.target.closest('.song:not(.active)')
-        if (songNode && !e.target.closest('.option')) {
-          // var getIndex =  songNode.getAttribute('data-index')  // --- Cách 1 ---
+      // playlist.onclick = function(e) {
+      //   // Xử lý khi click vào bài hát
+      //   const songNode = e.target.closest('.song:not(.active)')
+      //   if (songNode && !e.target.closest('.option')) {
+      //     // var getIndex =  songNode.getAttribute('data-index')  // --- Cách 1 ---
 
-          var getIndex =  Number(songNode.dataset.index) // --- Cách 2 ---
-          _this.currentIndex = getIndex
-          _this.loadCurrentSong()
-          _this.render()
-          audio.play()
-        }
-      }
+      //     var getIndex =  Number(songNode.dataset.index) // --- Cách 2 ---
+      //     _this.currentIndex = getIndex
+      //     _this.loadCurrentSong()
+      //     _this.render()
+      //     audio.play()
+      //   }
+      // }
       
     },
     
