@@ -109,7 +109,7 @@ const app = {
     },
     render: function() {
         const htmls = this.songs.map((song, index) => {
-          return `<div class="song ${index === app.songs[app.currentIndex] ? 'active' : ''}" data-index=${index}>
+          return `<div class="song ${index === this.currentIndex ? 'active' : ''}" data-index=${index}>
           <div class="thumb" style="background-image: url('${song.image}')">
           </div>
           <div class="body">
@@ -124,13 +124,13 @@ const app = {
         playlist.innerHTML = htmls.join('')
     }, // render ra view
 
-    // defineProperties: function() {
-    //   Object.defineProperty(this, 'currentSong', {
-    //     get: function() {
-    //       return this.songs[this.currentIndex]
-    //     }
-    //   })
-    // },
+    defineProperties: function() {
+      Object.defineProperty(this, 'currentSong', {
+        get: function() {
+          return this.songs[this.currentIndex]
+        }
+      })
+    },
 
     handleEvents: function() {
       const _this = this
@@ -307,9 +307,9 @@ const app = {
 
     loadCurrentSong: function() {
     
-      heading.textContent = app.songs[app.currentIndex].name
-      cdThumb.style.backgroundImage = `url("${app.songs[app.currentIndex.image}")`
-      audio.src = app.songs[app.currentIndex.path
+      heading.textContent = this.currentSong.name
+      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
+      audio.src = this.currentSong.path
       
 
     },
@@ -380,7 +380,7 @@ const app = {
         this.loadConfig()
 
         // Định nghĩa các thuộc tính
-        // this.defineProperties()
+        this.defineProperties()
 
         // Lắng nghe / xử lý các sự kiện
         this.handleEvents()
