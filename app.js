@@ -223,7 +223,7 @@ const app = {
         }
         audio.play()
         _this.render()
-        _this.scrollToActiveSong()
+        app.scrollToActiveSong()
       }
 
       prevBtn.onclick = function() {
@@ -234,7 +234,7 @@ const app = {
         }
         audio.play()
         _this.render()
-        _this.scrollToActiveSong()
+        app.scrollToActiveSong()
       }
 
       // Xử lý bật/tắt random song
