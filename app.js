@@ -151,13 +151,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItems) {
-            const object = JSON.parse(getItems)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItems = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItems) {
+          //   const object = JSON.parse(getItems)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -166,7 +166,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        _this.setConfig('musicIndex', app.currentIndex)
+        // _this.setConfig('musicIndex', app.currentIndex)
         console.log(_this.currentIndex)
 
         
@@ -185,7 +185,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          _this.setConfig('currentTime', progress.value)
+          // _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -216,7 +216,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            _this.setConfig('currentTime', progress.value)
+            // _this.setConfig('currentTime', progress.value)
           }
         }
       }
