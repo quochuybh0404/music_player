@@ -277,6 +277,55 @@ const app = {
       
     },
 
+        nextSong: function() {
+      this.currentIndex++
+      if(this.currentIndex >= this.songs.length) {
+        this.currentIndex = 0
+      }
+      
+      this.loadCurrentSong()
+    },
+
+    prevSong: function() {
+      this.currentIndex--
+      if(this.currentIndex < 0) {
+        this.currentIndex = this.songs.length - 1
+      }
+      this.loadCurrentSong()
+    },
+
+    
+    randomSong: function() {
+      // Xử lý để khi click phát ngẫu nhiên sẽ ko bị lặp trúng bài vừa phát và ko lặp lại khi chưa hết danh sách bài hát
+      // Chỉ lặp lại khi đã hết danh sách bài hát
+      
+      let randomIndex
+      do {
+        do {
+          randomIndex = Math.floor(Math.random() * this.songs.length)  
+        } while (randomIndex === this.currentIndex) 
+        this.currentIndex = randomIndex
+      } while (this.musicPlayed.includes(this.currentIndex))
+  
+      this.musicPlayed.push(this.currentIndex)
+      this.loadCurrentSong()
+      console.log(this.musicPlayed)
+      if (this.musicPlayed.length === this.songs.length ) {
+        this.musicPlayed = []
+      }
+      
+    },
+
+    scrollToActiveSong: function() {
+      setTimeout(() => {
+        $('.song.active').scrollIntoView({
+          behavior: "smooth",
+          block: "end", 
+          
+        })
+      }, 200)
+    },
+
     start: function() {
         // Định nghĩa các thuộc tính
         this.defineProperties()
