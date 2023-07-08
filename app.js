@@ -148,25 +148,25 @@ const app = {
 
     start: function() {
         // Gắn cấu hình từ config vào ứng dụng
-        this.loadConfig()
+        // this.loadConfig()
 
         // Định nghĩa các thuộc tính
-        this.defineProperties()
+        // this.defineProperties()
 
         // Lắng nghe / xử lý các sự kiện
-        this.handleEvents()
+        // this.handleEvents()
 
         // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
         this.loadCurrentSong()
 
         // Render playlist
-        this.render()
+        // this.render()
 
         // Hiển thị trạng thái ban đầu của button repeat & random
-        randomBtn.classList.toggle('active', this.isRandom) 
-        repeatBtn.classList.toggle('active', this.isRepeat)
+        // randomBtn.classList.toggle('active', this.isRandom) 
+        // repeatBtn.classList.toggle('active', this.isRepeat)
 
-        this.musicPlayed[0] = this.config.musicIndex       
+        // this.musicPlayed[0] = this.config.musicIndex       
         
         // this.playFromSavedPosition()
     }
