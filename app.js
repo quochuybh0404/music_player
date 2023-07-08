@@ -20,6 +20,10 @@ const playlist = $('.playlist')
 const app = {
     currentIndex: 0,
     isPlaying: false,
+    isRandom: false,
+    isRepeat: false,
+    musicPlayed : [0],
+    config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songs: [
         {
           name: "Tanjiro no Uta",
