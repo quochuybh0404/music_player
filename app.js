@@ -373,7 +373,7 @@ const app = {
         this.loadConfig()
 
         // Định nghĩa các thuộc tính
-        this.defineProperties()
+        // this.defineProperties()
 
         // Lắng nghe / xử lý các sự kiện
         this.handleEvents()
