@@ -140,7 +140,7 @@ const app = {
       // cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
       // audio.src = this.currentSong.path
 
-        console.log(app.songs.name)
+        console.log(this.currentSong.name)
 
     },
 
