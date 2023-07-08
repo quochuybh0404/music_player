@@ -400,6 +400,6 @@ const app = {
         // this.playFromSavedPosition()
     }
 }
-// app.start()
+app.start()
 
 
