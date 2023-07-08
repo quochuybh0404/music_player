@@ -109,7 +109,7 @@ const app = {
     },
     render: function() {
         const htmls = this.songs.map((song, index) => {
-          return `<div class="song ${index === this.currentIndex ? 'active' : ''}" data-index=${index}>
+          return `<div class="song">
           <div class="thumb" style="background-image: url('${song.image}')">
           </div>
           <div class="body">
