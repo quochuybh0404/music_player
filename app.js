@@ -140,7 +140,8 @@ const app = {
         console.log(
       
       
-    },
+    }
+},
 
     // handleEvents: function() {
     //   const _this = this
