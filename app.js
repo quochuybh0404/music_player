@@ -89,6 +89,12 @@ const app = {
             "image/demon slayer ss3.jpg"
         }
       ],
+
+    setConfig: function(key, value) {
+      this.config[key] = value
+      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },
+    
     render: function() {
         const htmls = this.songs.map(song => {
           return `<div class="song">
