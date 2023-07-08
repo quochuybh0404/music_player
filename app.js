@@ -125,9 +125,9 @@ const app = {
     }, // render ra view
 
     defineProperties: function() {
-      Object.defineProperty(this, 'currentSong', {
+      Object.defineProperty(app, 'currentSong', {
         get: function() {
-          return this.songs[this.currentIndex]
+          return app.songs[app.currentIndex]
         }
       })
     },
