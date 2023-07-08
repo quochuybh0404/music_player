@@ -27,7 +27,7 @@ const app = {
       {
         name: "Tanjiro no Uta",
         singer: "Go Shiina, Nami Nakagawa",
-        path: "music/tanjiro_no_uta.mp3",
+        path: "app.js",
         image: "image/Tanjiro_Nezuko.jpg"
       },
       {
