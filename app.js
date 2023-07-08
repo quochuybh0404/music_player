@@ -257,7 +257,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -294,8 +294,6 @@ const app = {
       heading.textContent = this.currentSong.name
       cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
       audio.src = this.currentSong.path
-      
-
     },
 
     nextSong: function() {
