@@ -124,13 +124,13 @@ const app = {
         playlist.innerHTML = htmls.join('')
     }, // render ra view
 
-    defineProperties: function() {
-      Object.defineProperty(app, 'currentSong', {
-        get: function() {
-          return app.songs[app.currentIndex]
-        }
-      })
-    },
+    // defineProperties: function() {
+    //   Object.defineProperty(app, 'currentSong', {
+    //     get: function() {
+    //       return app.songs[app.currentIndex]
+    //     }
+    //   })
+    // },
 
 
 
@@ -140,7 +140,7 @@ const app = {
       // cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
       // audio.src = this.currentSong.path
 
-        console.log(currentSong.name)
+        console.log(app.songs[app.currentIndex].name)
 
     },
 
