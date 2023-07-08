@@ -124,13 +124,13 @@ const app = {
     //     playlist.innerHTML = htmls.join('')
     // }, // render ra view
 
-    // defineProperties: function() {
-    //   Object.defineProperty(this, 'currentSong', {
-    //     get: function() {
-    //       return this.songs[this.currentIndex]
-    //     }
-    //   })
-    // },
+    defineProperties: function() {
+      Object.defineProperty(this, 'currentSong', {
+        get: function() {
+          return this.songs[this.currentIndex]
+        }
+      })
+    },
 
     // handleEvents: function() {
     //   const _this = this
@@ -305,11 +305,11 @@ const app = {
       
     // },
 
-    // loadCurrentSong: function() {
+    loadCurrentSong: function() {
     
-    //   heading.textContent = this.currentSong.name
-    //   cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
-    //   audio.src = this.currentSong.path
+      heading.textContent = this.currentSong.name
+      cdThumb.style.backgroundImage = `url("${this.currentSong.image}")`
+      audio.src = this.currentSong.path
       
 
     // },
@@ -375,30 +375,30 @@ const app = {
     // // },
     
 
-    // start: function() {
-    //     // Gắn cấu hình từ config vào ứng dụng
-    //     this.loadConfig()
+    start: function() {
+        // Gắn cấu hình từ config vào ứng dụng
+        // this.loadConfig()
 
-    //     // Định nghĩa các thuộc tính
-    //     this.defineProperties()
+        // Định nghĩa các thuộc tính
+        this.defineProperties()
 
-    //     // Lắng nghe / xử lý các sự kiện
-    //     this.handleEvents()
+        // Lắng nghe / xử lý các sự kiện
+        // this.handleEvents()
 
-    //     // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
-    //     this.loadCurrentSong()
+        // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+        this.loadCurrentSong()
 
-    //     // Render playlist
-    //     this.render()
+        // Render playlist
+        // this.render()
 
-    //     // Hiển thị trạng thái ban đầu của button repeat & random
-    //     randomBtn.classList.toggle('active', this.isRandom) 
-    //     repeatBtn.classList.toggle('active', this.isRepeat)
+        // Hiển thị trạng thái ban đầu của button repeat & random
+        // randomBtn.classList.toggle('active', this.isRandom) 
+        // repeatBtn.classList.toggle('active', this.isRepeat)
 
-    //     this.musicPlayed[0] = this.config.musicIndex       
+        // this.musicPlayed[0] = this.config.musicIndex       
         
-    //     // this.playFromSavedPosition()
-    // }
+        // this.playFromSavedPosition()
+    }
 }
 // app.start()
 
