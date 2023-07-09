@@ -103,10 +103,10 @@ const app = {
       },
       
     ],
-    // setConfig: function(key, value) {
-    //   this.config[key] = value
-    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    // },
+    setConfig: function(key, value) {
+      this.config[key] = value
+      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    },
     render: function() {
         const htmls = this.songs.map((song, index) => {
           return `<div class="song ${index === this.currentIndex ? 'active' : ''}" data-index=${index}>
@@ -175,7 +175,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        // _this.setConfig('musicIndex', _this.currentIndex)
+        _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
@@ -395,7 +395,7 @@ const app = {
         randomBtn.classList.toggle('active', this.isRandom) 
         repeatBtn.classList.toggle('active', this.isRepeat)
 
-        // this.musicPlayed[0] = this.config.musicIndex       
+        this.musicPlayed[0] = this.config.musicIndex       
         
         // this.playFromSavedPosition()
     }
