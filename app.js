@@ -300,9 +300,9 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      // this.currentIndex = this.config.musicIndex
+      this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
-      console.log(this.config.musicIndex)
+
     },
 
     loadCurrentSong: function() {
