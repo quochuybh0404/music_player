@@ -175,7 +175,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        _this.setConfig('musicIndex', _this.currentIndex)
+        // _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
@@ -395,7 +395,7 @@ const app = {
         randomBtn.classList.toggle('active', this.isRandom) 
         repeatBtn.classList.toggle('active', this.isRepeat)
 
-        this.musicPlayed[0] = this.config.musicIndex       
+        // this.musicPlayed[0] = this.config.musicIndex       
         
         // this.playFromSavedPosition()
     }
