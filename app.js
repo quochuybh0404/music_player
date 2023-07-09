@@ -103,10 +103,10 @@ const app = {
       },
       
     ],
-    setConfig: function(key, value) {
-      this.config[key] = value
-      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
-    },
+    // setConfig: function(key, value) {
+    //   this.config[key] = value
+    //   localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+    // },
     render: function() {
         const htmls = this.songs.map((song, index) => {
           return `<div class="song ${index === this.currentIndex ? 'active' : ''}" data-index=${index}>
@@ -160,13 +160,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -175,7 +175,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        _this.setConfig('musicIndex', _this.currentIndex)
+        // _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
@@ -300,7 +300,7 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      this.currentIndex = this.config.musicIndex
+      // this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
       
     },
@@ -395,7 +395,7 @@ const app = {
         randomBtn.classList.toggle('active', this.isRandom) 
         repeatBtn.classList.toggle('active', this.isRepeat)
 
-        this.musicPlayed[0] = this.config.musicIndex       
+        // this.musicPlayed[0] = this.config.musicIndex       
         
         // this.playFromSavedPosition()
     }
