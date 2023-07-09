@@ -160,12 +160,12 @@ const app = {
         } else {
           audio.play()
 
-          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          // if(getItem) {
-          //   const object = JSON.parse(getItem)
-          //   const savedLocation = object.currentTime
-          //   audio.currentTime = savedLocation/100 * audio.duration
-          //   audio.play()
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          if(getItem) {
+            const object = JSON.parse(getItem)
+            const savedLocation = object.currentTime
+            audio.currentTime = savedLocation/100 * audio.duration
+            audio.play()
         }
       }
 
@@ -298,7 +298,7 @@ const app = {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
       this.currentIndex = this.config.musicIndex
-      // progress.value = this.config.currentTime
+      progress.value = this.config.currentTime
       
     },
 
