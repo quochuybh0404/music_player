@@ -160,13 +160,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -193,7 +193,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          _this.setConfig('currentTime', progress.value)
+          // _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -224,7 +224,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            _this.setConfig('currentTime', progress.value)
+            // _this.setConfig('currentTime', progress.value)
           }
         }
       }
@@ -273,6 +273,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -299,8 +300,8 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      this.currentIndex = this.config.musicIndex
-      progress.value = this.config.currentTime
+      // this.currentIndex = this.config.musicIndex
+      // progress.value = this.config.currentTime
       console.log(this.config.musicIndex)
     },
 
