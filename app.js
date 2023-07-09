@@ -272,9 +272,7 @@ const app = {
       // Xử lý next song khi audio ended
       audio.onended = function() {
         if(_this.isRepeat) {
-          audio.play()
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          
+          audio.play()          
         } else {
           nextBtn.click()
         }
@@ -300,7 +298,7 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      this.currentIndex = this.config.musicIndex
+      // this.currentIndex = this.config.musicIndex
       // progress.value = this.config.currentTime
       
     },
