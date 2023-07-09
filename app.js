@@ -175,7 +175,7 @@ const app = {
         _this.isPlaying = true
         player.classList.add('playing')
         cdThumbAnimate.play()
-        // _this.setConfig('musicIndex', _this.currentIndex)
+        _this.setConfig('musicIndex', _this.currentIndex)
 
         
       }
