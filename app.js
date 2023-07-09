@@ -82,7 +82,7 @@ const app = {
       },
       {
         name: "Kizuna No Kiseki (Opening demon slayer ss3)",
-        singer: "Ufotable",
+        singer: "MAN WITH A MISSION × milet",
         path: "music/kizuna no kiseki.mp3",
         image:
           "image/demon slayer ss3.jpg"
