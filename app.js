@@ -74,7 +74,7 @@ const app = {
         image: "image/tengen vs gyutarou.jpg"
       },
       {
-        name: "Asa Ga Kuru (Ending demon slayer ss2 entertainment district)",
+        name: "Asa Ga Kuru (Entertainment District Ending Song)",
         singer: "Aimer",
         path: "music/asa ga kuru.mp3",
         image:
