@@ -366,6 +366,8 @@ const app = {
     
 
     start: function() {
+        this.currentIndex = this.config.musicIndex
+        
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
 
