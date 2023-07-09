@@ -160,12 +160,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -192,7 +193,7 @@ const app = {
           // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
           // progress.value = progressPercent
           progress.value = audio.currentTime/audio.duration *100
-          _this.setConfig('currentTime', progress.value)
+          // _this.setConfig('currentTime', progress.value)
         }
         
       }
@@ -223,7 +224,7 @@ const app = {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
             // progress.value = progressPercent
             progress.value = audio.currentTime/audio.duration *100
-            _this.setConfig('currentTime', progress.value)
+            // _this.setConfig('currentTime', progress.value)
           }
         }
       }
@@ -271,7 +272,8 @@ const app = {
       // Xử lý next song khi audio ended
       audio.onended = function() {
         if(_this.isRepeat) {
-          audio.play()          
+          audio.play()
+          
         } else {
           nextBtn.click()
         }
@@ -297,9 +299,9 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      this.currentIndex = this.config.musicIndex
-      progress.value = this.config.currentTime
-      
+      // this.currentIndex = this.config.musicIndex
+      // progress.value = this.config.currentTime
+      console.log(this.config.musicIndex)
     },
 
     loadCurrentSong: function() {
@@ -360,16 +362,6 @@ const app = {
       }, 200)
     },
 
-    // playFromSavedPosition: function() {
-    //   const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-    //   if(getItem) {
-    //     const object = JSON.parse(getItem)
-    //     savedLocation = object.currentTime
-    //     progress.value = savedLocation
-    //     audio.play()
-    //   }
-      
-    // },
     
 
     start: function() {
@@ -392,11 +384,9 @@ const app = {
         randomBtn.classList.toggle('active', this.isRandom) 
         repeatBtn.classList.toggle('active', this.isRepeat)
 
-        // this.musicPlayed[0] = this.config.musicIndex       
         
-        // this.playFromSavedPosition()
+        
     }
 }
 app.start()
-
 
