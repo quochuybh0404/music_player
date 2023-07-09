@@ -88,6 +88,12 @@ const app = {
           "image/demon slayer ss3.jpg"
       },
       {
+        name: "Sea Of Clouds And Haze",
+        singer: "Ufotable",
+        path: "music/sea_of_clouds_and_haze.mp3",
+        image: "image/Muichiro.jpg"
+      },
+      {
         name: "Mitsuri Theme",
         singer: "Ufotable",
         path: "music/mitsuri.mp3",
