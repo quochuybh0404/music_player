@@ -166,13 +166,13 @@ const app = {
         } else {
           audio.play()
 
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
-          if(getItem) {
-            const object = JSON.parse(getItem)
-            const savedLocation = object.currentTime
-            audio.currentTime = savedLocation/100 * audio.duration
-            audio.play()
-          }
+          // const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
+          // if(getItem) {
+          //   const object = JSON.parse(getItem)
+          //   const savedLocation = object.currentTime
+          //   audio.currentTime = savedLocation/100 * audio.duration
+          //   audio.play()
+          // }
         }
       }
 
@@ -279,7 +279,6 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
-          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -306,8 +305,9 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
+      this.config.musicIndex
       // this.currentIndex = this.config.musicIndex
-      progress.value = this.config.currentTime
+      // progress.value = this.config.currentTime
 
     },
 
@@ -372,10 +372,10 @@ const app = {
     
 
     start: function() {
-        this.currentIndex = this.config.musicIndex
-        
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
+
+        this.currentIndex = this.config.musicIndex
 
         // Định nghĩa các thuộc tính
         this.defineProperties()
