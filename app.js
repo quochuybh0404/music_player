@@ -204,11 +204,11 @@ const app = {
         
       }
 
-      progress.pointerdown = function() {
+      progress.onmousedown = function() {
         audio.ontimeupdate = null
       }
 
-      progress.pointerup = function() {
+      progress.onmouseup = function() {
         audio.ontimeupdate = function() {
           if (audio.duration) {
             // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
