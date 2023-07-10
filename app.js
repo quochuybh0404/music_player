@@ -74,7 +74,7 @@ const app = {
         image: "image/tengen vs gyutarou.jpg"
       },
       {
-        name: "Asa Ga Kuru (Entertainment District Ending Song)",
+        name: "Asa Ga Kuru (Ending demon slayer ss2 entertainment district)",
         singer: "Aimer",
         path: "music/asa ga kuru.mp3",
         image:
@@ -82,7 +82,7 @@ const app = {
       },
       {
         name: "Kizuna No Kiseki (Opening demon slayer ss3)",
-        singer: "MAN WITH A MISSION × milet",
+        singer: "Ufotable",
         path: "music/kizuna no kiseki.mp3",
         image:
           "image/demon slayer ss3.jpg"
@@ -279,6 +279,7 @@ const app = {
       audio.onended = function() {
         if(_this.isRepeat) {
           audio.play()
+          const getItem = localStorage.getItem(PLAYER_STORAGE_KEY);
           
         } else {
           nextBtn.click()
@@ -305,9 +306,8 @@ const app = {
     loadConfig: function() {
       this.isRandom = this.config.isRandom
       this.isRepeat = this.config.isRepeat
-      // this.currentIndex = this.config.musicIndex
       progress.value = this.config.currentTime
-
+      
     },
 
     loadCurrentSong: function() {
@@ -367,20 +367,29 @@ const app = {
         })
       }, 200)
     },
-
     
-
     start: function() {
+        
         if (this.config.musicIndex) {
-            this.currentIndex = this.config.musicIndex
+          this.currentIndex = this.config.musicIndex
         } else {
-            this.currentIndex = 0
+          this.currentIndex = 0
+        }
+
+        if(this.config.isRandom) {
+            randomBtn.classList.toggle('active', this.isRandom) 
+        } else {
+            this.isRandom = false
+        }
+
+        if(this.config.isRepeat) {
+            repeatBtn.classList.toggle('active', this.isRepeat)
+        } else {
+            this.isRepeat = false
         }
         
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
-
-        
 
         // Định nghĩa các thuộc tính
         this.defineProperties()
@@ -395,15 +404,11 @@ const app = {
         this.render()
 
         // Hiển thị trạng thái ban đầu của button repeat & random
-        randomBtn.classList.toggle('active', this.isRandom) 
-        repeatBtn.classList.toggle('active', this.isRepeat)
+        // randomBtn.classList.toggle('active', this.isRandom) 
+        // repeatBtn.classList.toggle('active', this.isRepeat)
 
-
-        
-
-        
-        
     }
 }
 app.start()
+
 
