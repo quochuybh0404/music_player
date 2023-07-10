@@ -376,6 +376,9 @@ const app = {
           this.currentIndex = 0
         }
 
+        randomBtn.classList.toggle('active', this.isRandom) 
+        repeatBtn.classList.toggle('active', this.isRepeat)
+
         // if(this.config.isRandom) {
         //     randomBtn.classList.toggle('active', this.isRandom) 
         // } else {
