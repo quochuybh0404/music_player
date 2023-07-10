@@ -218,6 +218,23 @@ const app = {
           
         }
       }
+
+     progress.addEventListener('pointerdown', PointerDown, false);
+     progress.addEventListener('pointerup', PointerUp, false);
+
+    function PointerDown () {
+        audio.ontimeupdate = null
+    }    
+
+    function PointerUp () {
+        audio.ontimeupdate = function() {
+          if (audio.duration) {
+            // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
+            // progress.value = progressPercent
+            progress.value = audio.currentTime/audio.duration *100
+          }
+        }
+    }
       
       // Xử lý khi tua bài hát
       progress.onchange = function() {
