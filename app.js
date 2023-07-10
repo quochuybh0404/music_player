@@ -375,7 +375,7 @@ const app = {
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
 
-        // this.currentIndex = this.config.musicIndex
+        this.currentIndex = this.config.musicIndex
 
         // Định nghĩa các thuộc tính
         this.defineProperties()
