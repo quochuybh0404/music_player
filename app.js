@@ -372,10 +372,11 @@ const app = {
     
 
     start: function() {
+        this.currentIndex = this.config.musicIndex
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
 
-        this.currentIndex = this.config.musicIndex
+        
 
         // Định nghĩa các thuộc tính
         this.defineProperties()
