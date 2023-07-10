@@ -402,7 +402,7 @@ const app = {
         } 
 
         if (this.isRepeat) {
-            randomBtn.classList.add('active', this.isRepeat) 
+            repeatBtn.classList.add('active', this.isRepeat) 
         } 
 
         
