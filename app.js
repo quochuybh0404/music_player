@@ -203,7 +203,7 @@ const app = {
         }
         
       }
-
+      
       progress.onmousedown = function() {
         audio.ontimeupdate = null
       }
@@ -218,7 +218,8 @@ const app = {
           
         }
       }
-
+     
+    // THêm sự kiện pointerdown, pointerup khi chạy trên điện thoại. Vì onmouseup, onmousedown ko hoạt động trên đth
      progress.addEventListener('pointerdown', PointerDown, false);
      progress.addEventListener('pointerup', PointerUp, false);
 
@@ -393,20 +394,6 @@ const app = {
           this.currentIndex = 0
         }
 
-        // randomBtn.classList.toggle('active', this.isRandom) 
-        // repeatBtn.classList.toggle('active', this.isRepeat)
-
-        // if(this.config.isRandom) {
-        //     randomBtn.classList.toggle('active', this.isRandom) 
-        // } else {
-        //     this.isRandom = false
-        // }
-
-        // if(this.config.isRepeat) {
-        //     repeatBtn.classList.toggle('active', this.isRepeat)
-        // } else {
-        //     this.isRepeat = false
-        // }
         
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
