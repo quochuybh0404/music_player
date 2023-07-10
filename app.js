@@ -376,17 +376,17 @@ const app = {
           this.currentIndex = 0
         }
 
-        if(this.config.isRandom) {
-            randomBtn.classList.toggle('active', this.isRandom) 
-        } else {
-            this.isRandom = false
-        }
+        // if(this.config.isRandom) {
+        //     randomBtn.classList.toggle('active', this.isRandom) 
+        // } else {
+        //     this.isRandom = false
+        // }
 
-        if(this.config.isRepeat) {
-            repeatBtn.classList.toggle('active', this.isRepeat)
-        } else {
-            this.isRepeat = false
-        }
+        // if(this.config.isRepeat) {
+        //     repeatBtn.classList.toggle('active', this.isRepeat)
+        // } else {
+        //     this.isRepeat = false
+        // }
         
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
