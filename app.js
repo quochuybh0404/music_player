@@ -372,7 +372,12 @@ const app = {
     
 
     start: function() {
-        this.currentIndex = this.config.musicIndex
+        if (this.config.musicIndex) {
+            this.currentIndex = this.config.musicIndex
+        } else {
+            this.currentIndex = 0
+        }
+        
         // Gắn cấu hình từ config vào ứng dụng
         this.loadConfig()
 
