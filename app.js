@@ -397,6 +397,15 @@ const app = {
         // Hiển thị trạng thái ban đầu của button repeat & random
         // randomBtn.classList.toggle('active', this.isRandom) 
         // repeatBtn.classList.toggle('active', this.isRepeat)
+        if (this.isRandom) {
+            randomBtn.classList.add('active', this.isRandom) 
+        } 
+
+        if (this.isRepeat) {
+            randomBtn.classList.add('active', this.isRepeat) 
+        } 
+
+        
 
         
         
