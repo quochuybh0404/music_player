@@ -218,6 +218,21 @@ const app = {
           
         }
       }
+
+     progress.pointerdown = function() {
+        audio.ontimeupdate = null
+      }
+
+      progress.pointerup = function() {
+        audio.ontimeupdate = function() {
+          if (audio.duration) {
+            // const progressPercent = Math.floor(audio.currentTime/audio.duration *100)
+            // progress.value = progressPercent
+            progress.value = audio.currentTime/audio.duration *100
+          }
+          
+        }
+      }
       
       // Xử lý khi tua bài hát
       progress.onchange = function() {
